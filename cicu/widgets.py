@@ -60,7 +60,7 @@ class CicuUploaderInput(forms.ClearableFileInput):
         self.options += (
             options.get(
                 'sizeErrorMessage',
-                _("Image doesn't meet the minimum size requirements ")
+                _("Error: image doesn't meet the minimum size requirements of ")
             ),
         )
         self.options += (options.get('modalSaveCropMessage', _('Set image')),)
@@ -85,8 +85,7 @@ class CicuUploaderInput(forms.ClearableFileInput):
         })
         output = super(CicuUploaderInput, self).render(name, value, attrs)
         option = optionsInput % ((name,) + self.options)
-        autoDiscoverScript = "<script>$(function(){CicuWidget.autoDiscover();});</script>"
-        return mark_safe(output + option + autoDiscoverScript)
+        return mark_safe(output + option)
 
     def value_from_datadict(self, data, files, name):
         # If a file was uploaded or the clear checkbox was checked, use that.
@@ -103,7 +102,7 @@ class CicuUploaderInput(forms.ClearableFileInput):
                 sizeWarning = self.options[0] == 'True'
                 if ((width < optionWidth or height < optionHeight) and sizeWarning):
                     raise Exception(
-                        'Image don\'t have correct ratio %sx%s' % (self.options[1], self.options[2])
+                        'Image doesn\'t have correct ratio of %sx%s' % (self.options[1], self.options[2])
                     )
                 return uploaded_file.file
             except Exception:

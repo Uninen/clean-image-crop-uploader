@@ -1,2 +1,11 @@
+.DS_Store
 *.pyc
-clean_image_crop_uploader.egg-info/
+._*
+*~
+.venv
+node_modules/*
+*.js.map
+*.css.map
+*.sassc
+**/.sass-cache/*
+**/.fuse_*

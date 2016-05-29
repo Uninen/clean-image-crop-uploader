@@ -38,7 +38,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 modalButtonLabel : 'Upload image',
                 changeButtonText : 'Select a different image',
                 sizeAlertMessage : 'Warning: the area selected is too small, min size:',
-                sizeErrorMessage : "Image doesn't meet the minimal size requirement",
+                sizeErrorMessage : "Error: image doesn't meet the minimal size requirement",
                 modalSaveCropMessage: 'Set image',
                 modalCloseCropMessage: 'Close',
                 uploadingMessage : 'Uploading your image',
@@ -83,7 +83,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     CicuWidget.prototype.initialize = function() {
         var self = this;
         this.modalId = this.name + '-uploadModal';
-        this.$modalButton = $('<a href="#' + this.modalId +'" role="button" class="btn btn-primary upload-btn" data-toggle="modal" data-target="#'+this.modalId+'" data-backdrop="static">'+this.options['modalButtonLabel']+'</a>');
+        this.$modalButton = $('<a href="#' + this.modalId +'" role="button" class="btn btn-primary btn-sm upload-btn" data-toggle="modal" data-target="#'+this.modalId+'" data-backdrop="static">'+this.options['modalButtonLabel']+'</a>');
         this.$croppedImagePreview = $('<div class="cropped-image-preview"><img src="'+this.$element.data('filename')+'"/></div>');
         this.$croppedImagePreview.append(this.$modalButton);
         this.$element.after(this.$croppedImagePreview);
@@ -95,8 +95,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             '' +
             '</div>' +
             '<div class="modal-footer">' +
-            '<button class="btn" data-dismiss="modal" aria-hidden="true">'+this.options.modalCloseCropMessage+'</button>' +
-            '<button class="modal-set-image-button btn btn-primary disabled">'+this.options.modalSaveCropMessage+'</button>' +
+            '<button class="btn btn-sm" data-dismiss="modal" aria-hidden="true">'+this.options.modalCloseCropMessage+'</button>' +
+            '<button class="modal-set-image-button btn btn-primary btn-sm disabled">'+this.options.modalSaveCropMessage+'</button>' +
             '</div>' +
             '</div>' +
             '</div>' +
@@ -122,7 +122,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         this.$element.on('change', function() {
             self.upload();
         });
-        this.$uploadButton = $('<div class="fileupload fileupload-new" data-provides="fileupload"><span class="btn btn-file">' +
+        this.$uploadButton = $('<div class="fileupload fileupload-new" data-provides="fileupload"><span class="btn btn-sm btn-file">' +
             '<span class="btn btn-primary fileupload-label fileupload-new" data-loading-text="Uploading your image...">'+this.options.fileUploadLabel+'</span></span>'+
             '</div>');
         this.$uploadModalBody.append(this.$uploadButton);
@@ -480,3 +480,4 @@ var image_cropping = {
         }
     }
 };
+$(function(){CicuWidget.autoDiscover();});

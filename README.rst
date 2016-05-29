@@ -1,12 +1,16 @@
+This is a fork of a fork of ``clean-image-crop-uploader`` by Alfredo Saglimbeni and Michael Jones.
+
+Changes:
+
+* removed non-working pypi metadata
+* removed south migrations, added Django 1.9 migrations
+* removed JavaScript auto discover from CicuUploaderInput to allow JavaScript files to be added to the bottom of the page
+* small wording and template tweaks
+
+
 clean-image-crop-uploader (CICU)
 ================================
-.. image:: https://d2weczhvl823v0.cloudfront.net/asaglimbeni/django-datetime-widget/trend.png
-    :target: https://bitdeli.com/free
-.. image:: https://pypip.in/v/clean-image-crop-uploader/badge.png
-    :target: https://crate.io/packages/clean-image-crop-uploader
-.. image:: https://pypip.in/d/clean-image-crop-uploader/badge.png
-    :target: https://crate.io/packages/clean-image-crop-uploader
-    
+
 ``clean-image-crop-uploader`` is a django widget to upload an image via Ajax and crop it using `Jcrop
 <https://github.com/tapmodo/Jcrop>`_. It provides a simple workflow: first one, using modal,
 (by `twitter bootstrap <http://twitter.github.com/bootstrap/javascript.html#modals>`_) the image can be uploaded and cropped.
@@ -16,20 +20,6 @@ Second one, you can see the image cropping preview in the form and finally submi
 You can use different configurations , with fixed aspect ratio or minimal image size.
 
 It works with jQuery = 1.8.3 and twitter bootstrap.
-
-Screenshot:
-
-#. Modal window with upload button:
-
-.. image:: http://asaglimbeni.github.com/clean-image-crop-uploader/images/screenshot1.jpg
-
-#. Modal window with crop area:
-
-.. image:: http://asaglimbeni.github.com/clean-image-crop-uploader/images/screenshot2.jpg
-
-#. Form with preview
-
-.. image:: http://asaglimbeni.github.com/clean-image-crop-uploader/images/screenshot3.jpg
 
 Installation
 ------------
@@ -85,28 +75,3 @@ Configuration
 
     ....
     </head>
-
-
-Run the example
----------------
-
-To run the example inside this package follow these commands::
-
-    > cd ./example/
-    > python manage.py syncdb
-    > python manage.py migrate # only if you use South!!!
-    > python manage.py collectstatic
-    > python manage.py runserver domain:8000
-
-Go to examples :
-
-#. Free crop : <http://domain:8000/cicu-freecrop/>
-
-#. Fixed aspect ratio: <http://domain:8000/cicu-fixedratio/>
-
-#. Fixed aspect ratio with minimal size: <http://domain:8000/cicu-warningsize/>
-
-
-
-
-
